@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect x=%224%22 y=%2216%22 width=%226%22 height=%226%22 fill=%22%234ade80%22 rx=%223%22/><rect x=%2210%22 y=%2216%22 width=%226%22 height=%226%22 fill=%22%2322c55e%22 rx=%223%22/><rect x=%2216%22 y=%2216%22 width=%226%22 height=%226%22 fill=%22%2316a34a%22 rx=%223%22/><rect x=%2222%22 y=%2210%22 width=%226%22 height=%226%22 fill=%22%2315803d%22 rx=%223%22/><circle cx=%2225%22 cy=%227%22 r=%224%22 fill=%22%2315803d%22/><circle cx=%2223%22 cy=%225%22 r=%221%22 fill=%22%23ffffff%22/><circle cx=%2227%22 cy=%225%22 r=%221%22 fill=%22%23ffffff%22/><circle cx=%2223%22 cy=%225%22 r=%220.5%22 fill=%22%23000000%22/><circle cx=%2227%22 cy=%225%22 r=%220.5%22 fill=%22%23000000%22/><circle cx=%228%22 cy=%228%22 r=%222%22 fill=%22%23ef4444%22/></svg>">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Snake Game</h1>
+            <div class="game-controls">
+                <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+                <button id="soundBtn" class="icon-btn" title="Toggle Sound">🔊</button>
+            </div>
+            <div class="score-container">
+                <span class="score">Score: <span id="score">0</span></span>
+                <span class="high-score">High Score: <span id="highScore">0</span></span>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <div class="game-board">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+                <!-- Game Over Screen -->
+                <div id="gameOverScreen" class="game-screen hidden">
+                    <h2>Game Over!</h2>
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <p>High Score: <span id="finalHighScore">0</span></p>
+                    <div class="game-stats">
+                        <p>Games Played: <span id="gamesPlayed">0</span></p>
+                        <p>Food Eaten: <span id="totalFood">0</span></p>
+                    </div>
+                    <button id="restartBtn" class="btn">Play Again</button>
+                </div>
+
+                <!-- Start Screen -->
+                <div id="startScreen" class="game-screen">
+                    <h2>Snake Game</h2>
+                    <p>Use arrow keys or touch controls to move</p>
+                    <p>Eat the food to grow and increase your score!</p>
+                    <div class="difficulty-selection">
+                        <label>Difficulty:</label>
+                        <select id="difficultySelect">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <button id="startBtn" class="btn">Start Game</button>
+                </div>
+
+                <!-- Pause Screen -->
+                <div id="pauseScreen" class="game-screen hidden">
+                    <h2>Paused</h2>
+                    <p>Press SPACE to resume</p>
+                    <button id="resumeBtn" class="btn">Resume</button>
+                </div>
+
+                <!-- Settings Screen -->
+                <div id="settingsScreen" class="game-screen hidden">
+                    <h2>Settings</h2>
+                    <div class="settings-options">
+                        <div class="setting-item">
+                            <label>Sound Effects:</label>
+                            <button id="soundToggle" class="toggle-btn">ON</button>
+                        </div>
+                        <div class="setting-item">
+                            <label>Default Difficulty:</label>
+                            <select id="defaultDifficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Theme:</label>
+                            <select id="themeSelect">
+                                <option value="default" selected>Default</option>
+                                <option value="dark">Dark</option>
+                                <option value="neon">Neon</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="closeSettingsBtn" class="btn">Close</button>
+                </div>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="mobile-controls">
+                <div class="control-row">
+                    <button id="upBtn" class="control-btn">▲</button>
+                </div>
+                <div class="control-row">
+                    <button id="leftBtn" class="control-btn">◄</button>
+                    <button id="pauseBtn" class="control-btn">⏸</button>
+                    <button id="rightBtn" class="control-btn">►</button>
+                </div>
+                <div class="control-row">
+                    <button id="downBtn" class="control-btn">▼</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="game-footer">
+            <p class="instructions">
+                <strong>Desktop:</strong> Use arrow keys to move, SPACE to pause<br>
+                <strong>Mobile:</strong> Use touch controls below
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

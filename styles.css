@@ -1,0 +1,157 @@
+/* Refined Aesthetic Game CSS */
+
+/* Theme Variables */
+:root {
+  --bg-gradient-start: #667eea;
+  --bg-gradient-end:   #764ba2;
+  --card-bg:           rgba(255, 255, 255, 0.9);
+  --primary-color:     #48bb78;
+  --accent-color:      #ee0979;
+  --text-color:        #2d3748;
+  --dark-overlay:      rgba(0, 0, 0, 0.8);
+  --shadow-light:      rgba(0, 0, 0, 0.05);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+/* Container Card */
+.game-container {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px var(--shadow-light);
+  width: 90%;
+  max-width: 480px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Header */
+.game-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 1px 1px 4px var(--shadow-light);
+}
+
+/* Controls */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.icon-btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Stats */
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Board */
+.game-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 320px;
+  background: #2d3748;
+  border-radius: 12px;
+  border: 4px solid var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px var(--shadow-light);
+}
+
+/* Overlays */
+.game-screen {
+  position: absolute;
+  inset: 0;
+  background: var(--dark-overlay);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 0.3s;
+}
+.game-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.game-screen h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.game-screen p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(45deg, var(--primary-color), #38a169);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+}
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--shadow-light);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
